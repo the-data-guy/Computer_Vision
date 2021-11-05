@@ -49,9 +49,9 @@ class LoadImagesToGcs(beam.DoFn):
 
 
 PROJECT = "kubeflow-1-0-2"  # <-- Change this
-BUCKET_NAME = "fire_detection_anurag"  # <-- Change this
-BUCKET_FILE_PATH = "no_fire/images"  # <-- Change this
-full_path = BUCKET_NAME + "/" + BUCKET_FILE_PATH
+bucket_name = "fire_detection_anurag"  # <-- Change this
+bucket_file_path = "no_fire/images"  # <-- Change this
+full_path = bucket_name + "/" + bucket_file_path
 file_csv = "gs://fire_detection_anurag/no_fire/No_fire_combined.csv"  # <-- Change this
 dependencies = "requirements.txt"
 max_num_workers = 5
@@ -76,8 +76,8 @@ def run():
      | beam.ParDo(
                   LoadImagesToGcs(),
                   # side inputs
-                  BUCKET_NAME,
-                  BUCKET_FILE_PATH
+                  bucket_name,
+                  bucket_file_path
                  )
     )
 
