@@ -67,6 +67,9 @@ def run():
             '--region=us-central1',
             '--runner=DataflowRunner'
            ]
+    # Note: Better to explicitly use 'staging_location' and 'temp_location' too.
+    # Reason: Otherwise it can create tmp/staging folders which persist in our GCS buckets
+    # and might break the downstream parts of the code.
 
     p = beam.Pipeline(argv=argv)
 
