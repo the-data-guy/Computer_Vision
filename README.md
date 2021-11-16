@@ -43,8 +43,15 @@ Step 7: Add **explainability** (**instance-level** feature importances) to the m
 [Note: Choose you [runtime-version](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) carefully.]
 - using **Explainable-AI-SDK**
 
+Step 8: Deploy model on Android smartphone
+- convert TF2.x model to tflite version
+- post-training quantization/optimization
+- deploy on Android device using PalletML
+https://youtu.be/VHicKAhkTwI
+
 
 Credits:
 - [Practical Machine Learning for Computer Vision](https://www.oreilly.com/library/view/practical-machine-learning/9781098102357/), by Valliappa Lakshmanan, Martin Görner, and Ryan Gillard. Copyright
 2021 Valliappa Lakshmanan, Martin Görner, and Ryan Gillard, 978-1-098-10236-4.
 - [Maven Wave](https://www.mavenwave.com/) (my employer) for giving me ample opportunities to not just learn new concepts, but also to get my hands dirty in cloud sandboxes
+- quicktensorflow course
