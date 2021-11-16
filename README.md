@@ -43,10 +43,10 @@ Step 7: Add **explainability** (**instance-level** feature importances) to the m
 [Note: Choose your [runtime-version](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) carefully.]
 - using **Explainable-AI-SDK**
 
-Step 8: Deploy model on Android smartphone
+Step 8: **Edge deployment**
 - convert TF2.x model to tflite version
 - post-training quantization/optimization
-- deploy on Android device using PalletML
+- deploy on **Android** device using PalletML
 
 https://user-images.githubusercontent.com/35262566/142001318-f42dd5d8-2363-46b6-9c62-e510c7c9b5ad.mp4
 
