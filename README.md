@@ -14,11 +14,11 @@ Reasons:
 
 Model **assumption**(s): It is **NOT** a smoke-detector. There has to be a flame (preferably erupting) in the image, for the model to classify it as "Fire".
 
-_Curate Data_
+_Curate-Data_
 
 Step 1: Get **images' urls** from Google search e.g. using keywords like 'building on fire', 'bushfires' etc.
 
-_Data Ingestion_
+_Parallelized Data-Ingestion_
 
 Step 2: **Load images to GCS** through Cloud **DataFlow** pipeline
 
@@ -28,7 +28,7 @@ Step 3: Train a **baseline AutoML model** using Python SDK for **Vertex AI**.
 Step 4: Convert image files in GCS, to **TFRecords** format, using Cloud **Dataflow** pipeline.
 [Note: This step took almost 14 vCPU hours on GCP, in my case.]
 
-_Model training_
+_Model-Training_
 
 Step 5: **Hyper-parameter tuning** for custom NN model, on **Vertex AI**
 [Note: Make sure there are enough GPU quotas for the GCP Project-ID.]
@@ -43,7 +43,19 @@ Step 7: Add **explainability** (**instance-level** feature importances) to the m
 [Note: Choose your [runtime-version](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) carefully.]
 - using **Explainable-AI-SDK**
 
-Step 8: **Edge deployment**
+_Inferencing_
+
+Step 8: Setting model signature(s) to infer from:
+- image **files**
+- image **bytes**
+
+In both cases, we deploy the model by creating a **REST endpoint on Vertex-AI**.
+
+**Why do we need the bytes option at this stage?**: What if we don't have the luxury of first uploading images to GCS, before sending them to our trained/exported model? In such cases, we can keep files locally stored, just send the extracted bytes over to the model in the form of json request, and get a json response in return. 
+
+_Edge-deployment_
+
+Step 9: Deployment on Android smartphone
 - convert TF2.x model to tflite version
 - post-training quantization/optimization
 - deploy on **Android** device using PalletML
