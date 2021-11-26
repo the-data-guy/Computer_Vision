@@ -1,0 +1,19 @@
+{
+ "instances": [
+               {
+                "filenames": "gs://fire_detection_anurag/test_images/fire1.jpg"
+               },
+               {
+                "filenames": "gs://fire_detection_anurag/test_images/fire2.jpg"
+               },
+               {
+                "filenames": "gs://fire_detection_anurag/test_images/fire3.jpg"
+               },
+               {
+                "filenames": "gs://fire_detection_anurag/test_images/fire4.jpg"
+               },
+               {
+                "filenames": "gs://fire_detection_anurag/test_images/fire5.jpg"
+               }
+              ]
+}
