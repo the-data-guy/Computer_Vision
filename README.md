@@ -1,5 +1,9 @@
 # End-to-End Fire-Detection
 
+**Notes:**
+- It is **NOT a smoke-detector**. There has to be a flame (preferably erupting) in the image, for the model to classify it as "Fire".
+- The **focus is on the end-to-end aspects of the ML problem, rather than a pure model performance boosting exercise/competition**. Put differently, a decently performing model a few steps closer to being put in production, is being preferred here over a very high performance model which never ventured out of its home of Jupyter notebook. (I love Jupyterlab, BTW.)
+
 Step 1: **Problem framing**
 
 Type of ML problem: Image Classification
@@ -14,9 +18,6 @@ Reasons:
 - Though the class distribution in dataset is not perfectly balanced, it's not heavily skewed either.
 - False Negatives (e.g. actual fire cases which went undetected) are as much to avoid, as False Positives (e.g. false alarms)
 
-**Notes:**
-- It is **NOT a smoke-detector**. There has to be a flame (preferably erupting) in the image, for the model to classify it as "Fire".
-- The **focus is on the end-to-end aspects of the ML problem, rather than a pure model performance boosting exercise/competition**. Put differently, a decently performing model a few steps to closer to being put in production, is being preferred here over a very high performance model which never ventured out of its home of Jupyter notebook. (I love Jupyterlab, BTW.)
 
 _Curate-Data_
 
