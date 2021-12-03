@@ -4,6 +4,7 @@ import json
 from oauth2client.client import GoogleCredentials
 import requests
 
+# TODO: Parametrize these, rather than hard-coding
 pub_sub_topic = 'projects/kubeflow-1-0-2/topics/inference_images'
 subscription_id = 'projects/kubeflow-1-0-2/subscriptions/my_subscription'
 PROJECT = "kubeflow-1-0-2"
