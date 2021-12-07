@@ -1,5 +1,7 @@
 # End-to-End Fire-Detection
 
+![image](https://user-images.githubusercontent.com/35262566/145054682-66117b47-4cfc-47f0-83fe-20e68c1c423f.png)
+
 **Notes:**
 - It is **NOT a smoke-detector**. There has to be a flame (preferably erupting) in the image, for the model to classify it as "Fire".
 - The **focus is on the end-to-end aspects of the ML problem, rather than a pure model performance boosting exercise/competition**. Put differently, a decently performing model a few steps closer to being put in production, is being preferred here over a very high performance model which never ventured out of its home of Jupyter notebook. (I love Jupyterlab, BTW.)
