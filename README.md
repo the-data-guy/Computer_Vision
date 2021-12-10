@@ -1,6 +1,6 @@
 # End-to-End Fire-Detection
 
-![image](https://user-images.githubusercontent.com/35262566/145584077-22b57cc9-7c0a-4dba-bd40-433470a78def.png)
+![image](https://user-images.githubusercontent.com/35262566/145584238-4774b92e-6d61-492c-97e2-fbfc27c126a3.png)
 
 **Disclaimer:**
 - It is **NOT a smoke-detector**. There has to be a flame (preferably erupting) in the image, for the model to classify it as "Fire".
