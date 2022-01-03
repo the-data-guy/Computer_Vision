@@ -31,13 +31,13 @@ Step 3: _Parallelized Data-Ingestion_
 Convert image files in GCS, to **TFRecords** format, using Cloud **Dataflow** pipeline.
 [Note: This step took almost 14 vCPU hours on GCP, in my case.]
 
-Why to convert to TFRecord format?:
+**Why to convert to TFRecord format?**:
 - to reduce time spent on reading data while model is being trained
 - ability to embed image metadata e.g. label (or bounding box coordinates in object detection)
 
-Why to do pre-processing (JPEG decoding, scaling etc.) BEFORE converting to TFRecord?: to avoid redoing these steps while iterating on training data.
+**Why to do pre-processing (JPEG decoding, scaling etc.) BEFORE converting to TFRecord?**: to avoid redoing these steps while iterating on training data.
 
-Why didn't we do image re-sizing also as a part of pre-processing at this stage itself?: Coz different models (if any) might need different resizing options. Since we choose to retain that flexibility, resizing will happen at training stage.
+**Why didn't we do image re-sizing also as a part of pre-processing at this stage itself?**: Coz different models (if any) might need different resizing options. Since we choose to retain that flexibility, resizing will happen at training stage.
 
 Another option worth considering here: Store the JPEG bytes (compressed in a manner tailored for images), rather than pixel values, in TFRecord format.
 
@@ -56,12 +56,16 @@ Step 6: _Model-Training_
 **Distributed training** (for the chosen hyper-parameter combo) across multiple GPUs
 [Note: Access to > 1 GPU is needed for MirroredStrategy in this step. For <= 1 GPU, just get rid of the strategy part of the code.]
 
+Why have we used data-parallelism, instead of model-parallelism?: Coz they are better suited for sparse and massive files/datapoints while an image is dense and small.
+
 Step 7: _Explainable-AI_
 
 Add **explainability** (**instance-level** feature importances) to the model predictions by
 - using **Integrated-Gradients** (**pixel-based**) and Explainable Representations through AI (**XRAI**; **region-based**) techniques on AI-Platform
 [Note: Choose your [runtime-version](https://cloud.google.com/ai-platform/training/docs/runtime-version-list) carefully.]
 - using **Explainable-AI-SDK**
+
+Choosing an **appropriate baseline** is critical here since the explanation (of model predictions) is relative to the baseline. So it is worth trying a few different baselines.
 
 Step 8: _Inferencing_
 

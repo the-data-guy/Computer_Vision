@@ -177,13 +177,6 @@ def train_and_evaluate(
                        l2 = 0.,
                       ):
     
-#     train_dataset = create_preproc_dataset(
-#                                            training_data_tfr
-#                                           ).batch(batch_size)
-#     eval_dataset = create_preproc_dataset(
-#                                           validation_data_tfr
-#                                          ).batch(batch_size)
-
     # callbacks
     early_stopping_cb = tf.keras.callbacks.EarlyStopping(
                                                          monitor='val_accuracy',
