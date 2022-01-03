@@ -27,13 +27,17 @@ def _float_feature(value):
 
 
 def read_and_decode(filename):
-    IMG_CHANNELS = 3
-    print(f'Reading {filename}')
-    img = tf.io.read_file(filename)
-    img = tf.image.decode_jpeg(img,
-                               channels=IMG_CHANNELS)
+    IMG_CHANNELS = 3  # RGB; 4th channel is for opacity
+    print(f'Reading {filename}') 
+    img = tf.io.read_file(filename)  # read a sequence of bytes
+    # convert to pixels (by using lookup tables)
+    img = tf.image.decode_jpeg(
+                               img,
+                               channels=IMG_CHANNELS
+                              )
+    # scaling of pixel values from [0,255] to [0,1]
     img = tf.image.convert_image_dtype(img,
-                                       tf.float32)
+                                       tf.float32)  # conversion to float
     return img
 
 
@@ -77,6 +81,7 @@ def write_records(OUTPUT_DIR,
                   splits,
                   split):
     nshards = 2
+    # Since floats occupy more space, hence use compression/gzip
     _ = (splits
          | 'only_{}'.format(split) >> beam.FlatMap(
                                                    lambda x: yield_records_for_split(x, split)
@@ -105,8 +110,8 @@ if __name__ == '__main__':
     dependencies = "requirements.txt"
     max_num_workers = 3
 
-    # clean-up output directory since Beam will name files 0000-of-0004 etc.
-    # and this could cause confusion if earlier run has 0000-of-0005, for eg
+    # clean-up output directory since Beam will name files like 0000-of-0004 etc.
+    # and this could cause confusion if earlier run has 0000-of-0005, for example
     try:
         subprocess.check_call('gsutil -m rm -r {}'.format(OUTPUT_DIR).split())
         subprocess.check_call('gsutil -m rm -r {}'.format(temp_dir).split())
