@@ -22,7 +22,7 @@ Reasons:
 
 Step 2: _Curate-Data_
 
-Get **images' urls** from Google search e.g. using keywords like 'building on fire', 'bushfires' etc.
+Get **images' urls** from Google search e.g. using keywords like 'building on fire', 'bushfires', 'vehicles burning' etc.
 
 Step 3: _Parallelized Data-Ingestion_
 
@@ -33,7 +33,7 @@ Convert image files in GCS, to **TFRecords** format, using Cloud **Dataflow** pi
 
 **Why to convert to TFRecord format?**:
 - to reduce time spent on reading data while model is being trained
-- ability to embed image metadata e.g. label (or bounding box coordinates in object detection)
+- ability to embed image metadata e.g. label (or bounding box coordinates in case of object detection)
 
 **Why to do pre-processing (JPEG decoding, scaling etc.) BEFORE converting to TFRecord?**: to avoid redoing these steps while iterating on training data.
 
@@ -56,7 +56,7 @@ Step 6: _Model-Training_
 **Distributed training** (for the chosen hyper-parameter combo) across multiple GPUs
 [Note: Access to > 1 GPU is needed for MirroredStrategy in this step. For <= 1 GPU, just get rid of the strategy part of the code.]
 
-Why have we used data-parallelism, instead of model-parallelism?: Coz they are better suited for sparse and massive files/datapoints while an image is dense and small.
+Why have we used data-parallelism, instead of model-parallelism?: Coz model-parallelism is better suited for sparse and massive files/datapoints while an image is dense and small.
 
 Step 7: _Explainable-AI_
 
@@ -73,7 +73,7 @@ Step 8: _Inferencing_
 - image **files**
 - image **bytes**
 
-In both cases, we deploy the model by creating a **REST endpoint on Vertex-AI**.
+In both cases, we deploy the model by creating an **endpoint on Vertex-AI**.
 
 **Why do we need the bytes option at this stage?**: What if we don't have the luxury of first uploading images to GCS, before sending them to our trained/exported model? In such cases, we can keep files locally stored, just send the extracted bytes over to the model in the form of json request, and get a json response in return. 
 
