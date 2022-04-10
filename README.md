@@ -99,10 +99,12 @@ Step 9: _Edge-deployment_
 - deploy on **Android** device using PalletML
 
 Image classification: One image at a time
+
 https://user-images.githubusercontent.com/35262566/142001318-f42dd5d8-2363-46b6-9c62-e510c7c9b5ad.mp4
 
 Real time activity classification on smartphone camera feed: Whether or not there is fire in the footage
-https://youtube.com/shorts/kRwpTxY51W8?feature=share
+
+https://drive.google.com/file/d/1Ga30ESW5gynlXgcypDIQaK2bvcEFw70k/view?usp=sharing
 
 Credits:
 - [Practical Machine Learning for Computer Vision](https://www.oreilly.com/library/view/practical-machine-learning/9781098102357/), by Valliappa Lakshmanan, Martin Görner, and Ryan Gillard. Copyright 2021 Valliappa Lakshmanan, Martin Görner, and Ryan Gillard, 978-1-098-10236-4
